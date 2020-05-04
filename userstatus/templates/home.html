@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if user.is_authenticated %}
+<center>
+    <a href="{% url 'logout' %}">logout</a>
+    {% set count = 1 %}
+    {% for item in items %}
+    <p>{{item.author}}</p>
+    <p>{{item.content}}</p>
+    <p>{{item.totallikes}}</p>
+    <p>{{item.date_posted}}</p>
+    {% endfor %}
+    <form method="post" action="{% url 'like_status' %}">
+       {% csrf_token %}
+       {% if item.is_liked %}
+       <button value="{{item.id}}" name="likebtn">Dislike</button>
+       {% else %}
+       <button value="{{item.id}}" name="likebtn">Like</button>
+       {% endif %}
+    </form>
+    {% else%}
+    <center> <p> You need to login first, <a href="{% url 'login' %}">login</a></p></center>
+    {% endif %}
+{% endblock %}
