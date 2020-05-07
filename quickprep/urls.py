@@ -5,7 +5,8 @@ from users import views as user_views
 from content import views as content_views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/',content_views.QuestionsListView.as_view(),name='home'),
+    path('home/',content_views.home,name='home'),
+    path('search/',content_views.search,name='search'),
     path('login/',auth_views.LoginView.as_view(template_name='login.html'),name='login' ),
     path('logout/',auth_views.LogoutView.as_view(template_name='logout.html'),name='logout'),
     path('register/',user_views.register,name='register'),

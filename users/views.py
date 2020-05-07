@@ -23,19 +23,3 @@ def register(request):
     else:
         form=UserRegisterForm()
     return render(request,'register.html',{'form':form})
-
-# class UserRegisterForm(UserCreationForm):
-#     email=forms.EmailField()
-#     class Meta:
-#         model=User
-#         fields=['username','email','password1','password2']
-
-# def register(request):
-#     if request.method=='POST':
-#         form=UserRegisterForm(request.POST)
-#         if(form.is_valid()):
-#             form.save()
-#             return redirect('login')
-#     else:
-#         form=UserRegisterForm()
-#         return render(request,'register.html',{'form':form})

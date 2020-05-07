@@ -1,0 +1,36 @@
+
+body{
+    font-size: 30px;
+    background-color: azure;
+  
+}
+#formcontent
+{
+    display:flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+}
+input
+{
+    display: block;
+    margin:1%;
+    font-size:30px;
+}
+span
+{
+    display: none;
+}
+input[type=submit]
+{
+    border:none;
+    margin-top: 2%;
+    cursor: pointer;
+    color:black;
+    border-radius: 10%;
+}
+#searchform button,#gobtn,#subjectoptions 
+{
+    font-size: 30px;
+}
