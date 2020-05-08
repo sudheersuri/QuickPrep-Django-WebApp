@@ -1,36 +1,39 @@
-
-body{
+body
+{
     font-size: 30px;
-    background-color: azure;
-  
+    background-color: #303303;
+}
+h1
+{
+    color:white;
+}
+label
+{
+ display:block; 
 }
 #formcontent
 {
-    display:flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-    height: 80%;
+    text-align: center;
 }
-input
+#loginformcontent,#registerformcontent
+{
+    display:flex;
+    flex-flow:column wrap;
+    align-items: center;
+    border-radius: 10px;
+    margin:10%;
+}
+#loginformcontent input[type="submit"],#registerformcontent input[type="submit"]
 {
     display: block;
-    margin:1%;
-    font-size:30px;
+    margin-top:20px;
 }
 span
 {
     display: none;
 }
-input[type=submit]
+#questionitem
 {
-    border:none;
-    margin-top: 2%;
-    cursor: pointer;
-    color:black;
-    border-radius: 10%;
-}
-#searchform button,#gobtn,#subjectoptions 
-{
-    font-size: 30px;
-}
+    margin-left:2%;
+    margin-right:2%;
+ }

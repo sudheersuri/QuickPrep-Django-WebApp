@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
-<div id="formcontent">
 
+<div class="well well-sm" id="registerformcontent">
+    <h2><b>R E G I S T E R</b></h2><br>
 <form method='POST' action="{% url 'register'%}">
     {% csrf_token %}
     {{form}}
-    <input type="submit" value="register">
+  <center>  <input type="submit" class="btn btn-primary btn-lg" value="Register">
+
+    <a href="{% url 'login' %}"> Login </a></center>
 </form>
-<a href="{% url 'login' %}"> Login </a>
+
 </div>
 {% endblock %}

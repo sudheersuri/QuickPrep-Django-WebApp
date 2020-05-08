@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-
     {% if user.is_authenticated %}
     <center>  <a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i></a>
         <a href="{% url 'search' %}"><i class="fa fa-search"></i></a>
@@ -8,7 +7,7 @@
       <center>
     <form method="post"  action="{%url 'home'%}" >
         {% csrf_token %}
-        <select name="selectedsubject" id="subjectoptions"> 
+        <select name="selectedsubject" id="subjectoptions" > 
             {% for sub in subjects %}
 
             {% if currsub == sub.id %}
@@ -18,26 +17,30 @@
             {%endif%}
             {% endfor %}
         </select>  
-        <button type="submit" id="gobtn">Go</button>
+        <button type="submit" id="gobtn" class="btn btn-primary btn-lg" >Go</button>
     </form>   
     </center>     
-    <ol>
         {% for item in page_obj %}
-        <li><p><b>{{item.question}}</b></p>
-        <p>{{item.answer}}</p></li>
+        
+            <div class="well well-sm" id="questionitem">
+            <p><b>{{item.question}}</b></p>
+        <p>{{item.answer}}</p></div>
         {% endfor %}
-        </ol>
         <center>
         {% if page_obj.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        <ul class="pagination">
+            <a href="?page=1" class="btn btn-primary btn-lg">&laquo; First</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary btn-lg">Previous</a>
+        </ul>
         {% endif %}
 
-        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        <!-- Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}. -->
 
         {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        <ul class="pagination">
+            <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary btn-lg">Next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-primary btn-lg">Last &raquo;</a>
+        </ul>
         {% endif %}
 
         {% else%}

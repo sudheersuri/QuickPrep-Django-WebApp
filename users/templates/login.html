@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-<div id="formcontent">
-    
-<form method='POST'>
+
+<div class="well well-sm" id="loginformcontent">
+    <h2><b>L O G I N</b></h2><br>
+<form method='POST' id="loginform">
     {% csrf_token %}
-    {{form}}
-    <input type="submit" value="login">
- </form>
+    <div class="form-group" id="">
+         {{form}}
+   <center> <input type="submit" class="btn btn-primary btn-lg" value="Login"></center>
+</div>
+
+</form>
 <a href="{% url 'password_reset' %}"> Forgot Password? </a> <br>
 <a href="{% url 'register' %}"> Register </a>
 </div>
