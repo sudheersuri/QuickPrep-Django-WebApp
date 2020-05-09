@@ -1,32 +1,39 @@
 {% extends 'base.html' %}
 {% block content %}
     {% if user.is_authenticated %}
-    <center>  <a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i></a>
-        <a href="{% url 'search' %}"><i class="fa fa-search"></i></a>
-       </center>
+             
+<div class="container">
+    <div id="header">
       <center>
-    <form method="post"  action="{%url 'home'%}" >
-        {% csrf_token %}
-        <select name="selectedsubject" id="subjectoptions" > 
-            {% for sub in subjects %}
-
-            {% if currsub == sub.id %}
-              <option value="{{sub.id}}" selected><p>{{sub.subject}}</p></option>
-            {% else %}
-            <option value="{{sub.id}}"><p>{{sub.subject}}</p></option>
-            {%endif%}
-            {% endfor %}
-        </select>  
-        <button type="submit" id="gobtn" class="btn btn-primary btn-lg" >Go</button>
-    </form>   
-    </center>     
-        {% for item in page_obj %}
+        <form method="post"  action="{%url 'home'%}" >
+            {% csrf_token %}
+            <select name="selectedsubject" id="subjectoptions" onchange="this.form.submit()"> 
+                {% for sub in subjects %}
+    
+                {% if currsub == sub.id %}
+                  <option value="{{sub.id}}" selected><p>{{sub.subject}}</p></option>
+                {% else %}
+                <option value="{{sub.id}}"><p>{{sub.subject}}</p></option>
+                {%endif%}
+                {% endfor %}
+            </select>  
+        </form>   
+    </center>
+            {% for item in page_obj %}
         
-            <div class="well well-sm" id="questionitem">
-            <p><b>{{item.question}}</b></p>
-        <p>{{item.answer}}</p></div>
-        {% endfor %}
-        <center>
+            <div class="panel panel-default">
+                
+      
+                <div class="panel-heading">{{item.question}}</div>
+                <div class="panel-body">{{item.answer}}</div>
+              </div>
+              {% endfor %}
+
+            </div>
+                            
+    </div>
+    <center>
+    
         {% if page_obj.has_previous %}
         <ul class="pagination">
             <a href="?page=1" class="btn btn-primary btn-lg">&laquo; First</a>

@@ -2,7 +2,6 @@
 {% block content %}
     {% if user.is_authenticated %}
     <center>
-        <a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i></a>
         <a href="{% url 'home' %}"><i class="fa fa-home"></i></a>
         <form action="{% url 'search' %}" method="post" id="searchform">
             {% csrf_token %}
@@ -10,15 +9,14 @@
             <button type="submit" class="btn btn-primary btn-lg" ><i class="fa fa-search" ></i></button>
         </form>
     </center>
+    <div class="container">
     {% for item in items %}
-    <div class="well well-sm" id="questionitem">
-   
-   <p><b>{{item.question}}</b></p>
-    <p>{{item.answer}}</p>
-    </div>  
+    <div class="panel panel-default">  
+        <div class="panel-heading">{{item.question}}</div>
+        <div class="panel-body">{{item.answer}}</div>
+    </div>
     {% endfor %}
-    
-   
+    </div>
     {% else%}
     <center> <p> You need to login first, <a href="{% url 'login' %}">login</a></p></center>
     {% endif %}
