@@ -1,15 +1,14 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
 
-<div class="well well-sm" id="loginformcontent">
+<div id="loginformcontent">
     <h2><b>L O G I N</b></h2><br>
-<form method='POST' id="loginform">
+<form method='POST'>
     {% csrf_token %}
-    <div class="form-group" id="">
-         {{form}}
+         {{form | crispy}}
    <center> <input type="submit" class="btn btn-primary btn-lg" value="Login"></center>
-</div>
-
+   <p style="visibility: hidden;">hidddentexthidddentexthiddentext</p>
 </form>
 <a href="{% url 'password_reset' %}"> Forgot Password? </a> <br>
 <a href="{% url 'register' %}"> Register </a>

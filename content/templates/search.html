@@ -2,12 +2,19 @@
 {% block content %}
     {% if user.is_authenticated %}
     <center>
-        <a href="{% url 'home' %}"><i class="fa fa-home"></i></a>
+        <a href="{% url 'home' %}" class="btn btn-default btn-lg"><i class="fa fa-home" ></i></a><br><br><br>
+        <div class="container">
         <form action="{% url 'search' %}" method="post" id="searchform">
             {% csrf_token %}
-            <input type="text"  name="searchtext" required>
-            <button type="submit" class="btn btn-primary btn-lg" ><i class="fa fa-search" ></i></button>
+            <div class="input-group">
+       
+            <input type="text"  name="searchtext" class="form-control" placeholder="Search" required>
+           <div class="input-group-btn">
+            <button class="btn btn-default" type="submit">Go</button>
+            </div>
+            </div>
         </form>
+        </div>
     </center>
     <div class="container">
     {% for item in items %}
@@ -20,4 +27,6 @@
     {% else%}
     <center> <p> You need to login first, <a href="{% url 'login' %}">login</a></p></center>
     {% endif %}
+    
+    
 {% endblock %}

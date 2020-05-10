@@ -3,6 +3,7 @@
     {% if user.is_authenticated %}
              
 <div class="container">
+    
     <div id="header">
       <center>
         <form method="post"  action="{%url 'home'%}" >
@@ -36,8 +37,8 @@
     
         {% if page_obj.has_previous %}
         <ul class="pagination">
-            <a href="?page=1" class="btn btn-primary btn-lg">&laquo; First</a>
-            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary btn-lg">Previous</a>
+            <a href="?page=1" class="btn btn-default btn-sm">&laquo; First</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-default btn-sm">Previous</a>
         </ul>
         {% endif %}
 
@@ -45,8 +46,8 @@
 
         {% if page_obj.has_next %}
         <ul class="pagination">
-            <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary btn-lg">Next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-primary btn-lg">Last &raquo;</a>
+            <a href="?page={{ page_obj.next_page_number }}" class="btn btn-default btn-sm">Next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-default btn-sm">Last &raquo;</a>
         </ul>
         {% endif %}
 
@@ -54,4 +55,5 @@
             <p> You need to login first, <a href="{% url 'login' %}">login</a></p>
         {% endif %}
         </center>
+        <br><br>
 {% endblock %}
